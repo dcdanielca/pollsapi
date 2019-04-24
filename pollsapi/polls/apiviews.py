@@ -16,13 +16,14 @@ class PollViewSet(viewsets.ModelViewSet):
     serializer_class = PollSerializer
 
     def destroy(self, request, pk):
-        get_object_or_404(Poll, pk = pk)
-        poll = Poll.objects.filter(pk=pk, created_by=request.user) 
+        get_object_or_404(Poll, pk=pk)
+        poll = Poll.objects.filter(pk=pk, created_by=request.user)
         if poll:
             poll.delete()
-            return Response({"detail": "Poll deleted"}, status = status.HTTP_200_OK)
+            return Response({"detail": "Poll deleted"}, status=status.HTTP_200_OK)
         else:
-            return Response({"detail": "You can not delete this poll."}, status = status.HTTP_403_FORBIDDEN)
+            return Response({"detail": "You can not delete this poll."}, status=status.HTTP_403_FORBIDDEN)
+
 
 class ChoiceList(generics.ListCreateAPIView):
     serializer_class = ChoiceSerializer
