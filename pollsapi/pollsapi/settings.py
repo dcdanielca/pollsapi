@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'polls',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
